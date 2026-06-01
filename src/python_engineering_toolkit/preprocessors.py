@@ -31,6 +31,7 @@ class BasePreprocessor(ABC):
 
 class NumericPreprocessor(BasePreprocessor):
     """Handles numeric data: validates type, transformes to float"""
+    __slots__ = ()  # No instance attributes, so empty tuple
 
     def validate(self, data: Any) -> bool:
         return isinstance(data, (int, float))
@@ -55,6 +56,7 @@ class NumericPreprocessor(BasePreprocessor):
 
 class CategoricalPreprocessor(BasePreprocessor):
     """Handles categorical data: validates type, transforms to lowercase string."""
+    __slots__ = ()
 
     def validate(self, data: Any) -> bool:
         return isinstance(data, str)
@@ -79,6 +81,7 @@ class CategoricalPreprocessor(BasePreprocessor):
 
 class DatePreprocessor(BasePreprocessor):
     """Handles date strings: validates format, transforms to ISO 8601."""
+    __slots__ = ()
 
     def validate(self, data: Any) -> bool:
         if not isinstance(data, str):
